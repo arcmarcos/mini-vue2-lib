@@ -1,0 +1,24 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import FormRoot from './FormRoot.vue';
+
+<Meta title="MDX/FormRoot" component={FormRoot} />
+
+export const Template = (args, { argTypes }) => ({
+  props: Object.keys(argTypes),
+  components: { FormRoot },
+  template: '<FormRoot v-bind="$props" />',
+});
+
+# FormRoot
+
+With `MDX`, we can define a story for `FormRoot` right in the middle of our
+Markdown documentation.
+
+<Canvas>
+  <Story 
+    name="FormRoot"
+    args={{}}
+  >
+    {Template.bind({})}
+  </Story>
+</Canvas>
