@@ -17,7 +17,6 @@ module.exports = {
   },
   "features": {
     "storyStoreV7": true,
-    "modernInlineRender": true,
   },
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
