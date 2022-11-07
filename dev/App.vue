@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="py-4">
     <FormInput
       v-model="input"
       placeholder="Type here"

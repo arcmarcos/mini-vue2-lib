@@ -1,5 +1,5 @@
 <template>
-  <div class="relative flex flex-col gap-1">
+  <div class="relative">
     <slot />
     <label
       v-if="float_label"
@@ -32,13 +32,16 @@ export default {
 <style>
 .float-label {
   @apply
-    absolute
-    top-1
-    left-5
-    text-[10px]
-    font-semibold
-    placeholder-shown:placeholder:opacity-0
-    peer-focus:text-cyan-800
+    absolute left-0 -top-3.5 text-gray-600 text-sm
+    transition-all
+    peer-placeholder-shown:text-base
+    peer-placeholder-shown:text-gray-400
+    peer-placeholder-shown:top-2
+    peer-focus:-top-3.5
+    peer-focus:text-blue-600
+    peer-focus:text-sm
+    peer-focus:font-semibold
+    peer-[:not(:placeholder-shown)]:font-semibold
   ;
 }
 </style>
