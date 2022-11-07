@@ -1,19 +1,27 @@
-import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { ArgsTable, Canvas, Meta, Story } from '@storybook/addon-docs';
 import FormInput from './FormInput.vue';
-import FormRoot from '../FormRoot/FormRoot.vue';
+import { useArgs } from '@storybook/client-api'
 
 <Meta title="MDX/FormInput" component={FormInput} />
 
-export const Template = (args, { argTypes }) => ({
-  props: Object.keys(argTypes),
-  components: { FormInput, FormRoot },
-  template: `
-    <div class="flex flex-col gap-1">
-      <label for="input">Input</label>
-      <FormInput v-bind="$props" />
-    </div>
-  `,
-});
+export const Template = (args, { argTypes }) => {
+  const [_, updateArgs] = useArgs()
+  return {
+    props: Object.keys(argTypes),
+    components: { FormInput },
+    template: `
+        <FormInput v-bind="$props" @input="handleInput" />
+    `,
+    methods: {
+      handleInput(value, e) {
+        updateArgs({
+          ...args,
+          value,
+        })
+      }
+    }
+  }
+};
 
 # FormInput
 
@@ -24,11 +32,12 @@ Markdown documentation.
   <Story 
     name="FormInput"
     args={{
-      id: 'input',
-      placeholder: 'Type here',
-      float_label: false,
+      placeholder: 'Type your e-mail here',
+      float_label: 'E-mail',
     }}
   >
     {Template.bind({})}
   </Story>
 </Canvas>
+
+<ArgsTable of={FormInput} />

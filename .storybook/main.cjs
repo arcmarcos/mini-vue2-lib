@@ -16,7 +16,8 @@ module.exports = {
     "builder": "@storybook/builder-vite"
   },
   "features": {
-    "storyStoreV7": true
+    "storyStoreV7": true,
+    "modernInlineRender": true,
   },
   async viteFinal(config, { configType }) {
     return mergeConfig(config, {
